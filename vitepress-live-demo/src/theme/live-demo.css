@@ -1,0 +1,144 @@
+.live-demo-container {
+  border: 1px solid var(--c-divider);
+  border-radius: 6px;
+}
+
+.live-demo-container+.browser-nav {
+  margin-top: 24px;
+}
+
+.live-demo-container .demo-block {
+  padding: 24px;
+}
+
+.live-demo-container iframe {
+  border: 0;
+  width: 100%;
+}
+
+.live-demo-container.compact {
+  padding: 0;
+  padding-bottom: 14px;
+}
+
+.live-demo-container .action-line {
+  border-top: 1px solid var(--c-divider);
+  display: flex;
+  height: 40px;
+  padding: 0 8px;
+  align-items: center;
+}
+
+.live-demo-container .action-line .action-line__buttons {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.live-demo-container .file-tab span {
+  padding: 9px;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+.live-demo-container .file-tab span.active {
+  border-bottom: 3px solid var(--c-brand);
+  padding: 9px 9px 7px 9px;
+}
+
+.live-demo-container .code-wrapper {
+  box-sizing: border-box;
+  margin: 0 !important;
+  border-radius: 0;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+.live-demo-container .code-wrapper>div {
+  margin: 0;
+  border-radius: 0;
+}
+
+
+.live-demo-container .botton-line {
+  z-index: 10;
+  position: sticky;
+  bottom: 0;
+  text-align: center;
+  background: #ffffff9f;
+  font-weight: 500;
+  line-height: 2;
+  transition: ease 0.3s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.live-demo-container .botton-line:hover {
+  color: var(--c-brand);
+}
+
+.live-demo-container .action-line .live-demo-icon {
+  margin-right: 10px;
+}
+
+.live-demo-container .action-line .action-line__buttons:last-child .live-demo-icon {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.live-demo-container .live-demo-icon {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
+.live-demo-container .live-demo-icon.is-success {
+  color: #67C23A;
+}
+
+/* https://www.w3schools.com/css/css_tooltip.asp */
+/* Tooltip container */
+.live-demo-container .live-demo-tooltip {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.live-demo-container .live-demo-tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #000000b0;
+  color: #fff;
+  /* text-align: center; */
+  padding: 4px 7px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  white-space: nowrap;
+  max-width: 200px;
+  /* white-space: nowrap; */
+  left: 50%;
+  font-size: 14px;
+  transform: translate(-50%, -5px);
+}
+
+.live-demo-container .live-demo-tooltip .tooltip-top::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000000b0 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.live-demo-container .live-demo-tooltip:hover .tooltiptext {
+  visibility: visible;
+}

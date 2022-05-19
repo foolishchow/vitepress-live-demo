@@ -1,0 +1,20 @@
+.red-text {
+  color: var(--c-brand)
+}
+
+.points-plate {
+  width: 444px;
+  height: 222px;
+  background: #000;
+  margin: 16px auto 0;
+  position: relative
+}
+
+.center-anchor {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--c-brand);
+  left: 220px;
+  top: 220px
+}

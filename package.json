@@ -1,0 +1,19 @@
+{
+  "name": "front-playground",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "vitepress-live-demo",
+    "example"
+  ],
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "dev": "lerna run build --scope vitepress-live-demo && lerna run dev --parallel",
+    "build:example": "lerna run docs:build --scope example",
+    "dev:example": "lerna run build --scope vitepress-live-demo && lerna run dev --scope example",
+    "dev:plugin": "lerna run dev --scope vitepress-live-demo ",
+    "build": "lerna run build --scope vitepress-live-demo"
+  }
+}

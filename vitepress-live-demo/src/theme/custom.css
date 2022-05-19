@@ -1,0 +1,7 @@
+div[class~='language-shell']:before {
+  content: 'sh';
+}
+
+div[class~='language-tsx']:before {
+  content: 'tsx';
+}
