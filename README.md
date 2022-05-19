@@ -4,6 +4,10 @@
 >  - support iframe 
 >  - support isolate demo view in `~/demo.html`
 
+inspried by 
+- [dumi](https://d.umijs.org/zh-CN)
+- [create-vitepress-demo](https://github.com/bowencool/create-vitepress-demo)
+
 # demo
 
 see [`example`](./example/)

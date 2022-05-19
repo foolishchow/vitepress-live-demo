@@ -43,5 +43,9 @@
     "README.md"
   ],
   "author": "foolishchow",
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foolishchow/vitepress-live-demo.git"
+  }
 }
