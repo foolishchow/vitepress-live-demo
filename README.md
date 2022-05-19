@@ -4,6 +4,10 @@
 >  - support iframe 
 >  - support isolate demo view in `~/demo.html`
 
+# demo
+
+see [`example`](./example/)
+
 # install 
 ```
 npm i vitepress-live-demo
