@@ -3,7 +3,6 @@ import useCopy from './useCopy';
 import { LiveDemoIcon } from './icons'
 import './live-demo.css'
 import { LiveDemoFile } from '../constant';
-
 /**
  * LiveDemoComponentProps definition
  */
@@ -32,6 +31,13 @@ export const LiveDemoComponenentProps = {
     type: Array as PropType<LiveDemoFile[]>,
     default: () => [],
   },
+  alwaysShowNewTab: {
+    type: Boolean,
+    default() {
+      return false
+      // return import.meta.env.Live_Demo_Alawys_Show_New_Tab as boolean
+    }
+  }
 }
 /**
  * component for `LiveDemo`
@@ -96,6 +102,12 @@ export const LiveDemoComponenent = defineComponent({
         props.iframe,
         <div class="browser-nav"></div>
       )
+      const newTabIcon = onlyWhen(
+        props.iframe || props.alwaysShowNewTab,
+        <ToolTip tip="在新标签页中打开">
+          <LiveDemoIcon name='newTab' onClick={openNewTab} />
+        </ToolTip>
+      )
       const iframeIcons = onlyWhen(
         props.iframe,
         <ToolTip tip="刷新">
@@ -141,9 +153,7 @@ export const LiveDemoComponenent = defineComponent({
 
           <div class="action-line">
             <div class="action-line__buttons">
-              <ToolTip tip="在新标签页中打开">
-                <LiveDemoIcon name='newTab' onClick={openNewTab} />
-              </ToolTip>
+              {newTabIcon}
               {iframeIcons}
             </div>
             {fileHeaders}

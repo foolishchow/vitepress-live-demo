@@ -40,7 +40,7 @@ async function bundle() {
     await bundleTheme('build')
     await bundleThemeType('build')
     await bundleDemo('build')
-    await bundleThemeType('build')
+    await bundleDemoType('build')
   }
 
 }

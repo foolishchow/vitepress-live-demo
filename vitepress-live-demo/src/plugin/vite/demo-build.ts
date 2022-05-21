@@ -7,8 +7,9 @@ import type { LiveDemoPluginOptions } from '..'
 // @ts-ignore
 const globby: typeof import('globby') = require('globby')
 
+const defaultDemos = ['docs/**/*.{js,jsx,ts,tsx,vue}','examples/**/*.{js,jsx,ts,tsx,vue}','!.vitepress',"!**/*/vite.config.{js,ts}"]
 
-export function DemoBuildPlugin(option:Required<LiveDemoPluginOptions>) {
+export function DemoBuildPlugin(option:LiveDemoPluginOptions) {
   let config: ParsedViteConfig = {} as any
   const chunkMap: any = {}
   return {
@@ -16,9 +17,10 @@ export function DemoBuildPlugin(option:Required<LiveDemoPluginOptions>) {
     apply: 'build',
     enforce: 'pre',
     async config(config) {
+      if(config.build?.ssr) return
       const input = config?.build?.rollupOptions?.input || {}
-
-      const demos = await globby(option.demos)
+      const demosGlobby = option.demos ?? defaultDemos
+      const demos = await globby(demosGlobby)
       // console.info(demos)
       demos.forEach(demo => {
         // @ts-ignore

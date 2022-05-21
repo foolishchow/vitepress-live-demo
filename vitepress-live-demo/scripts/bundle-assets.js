@@ -32,12 +32,12 @@ exports.bundleTheme = (mode, clean = false) => {
       },
       lib: {
         entry: path.resolve(entryDir, 'theme/index.ts'),
-        fileName: (formats) => `theme.mjs`, // 输出文件名
+        fileName: (formats) => `theme.js`, // 输出文件名
         formats: ['es'],
       },
       outDir
     },
-    plugins: [vue(), vueJsx()],
+    plugins: [KeepMetaPlugin, vue(), vueJsx()],
   })
 }
 
@@ -63,10 +63,6 @@ exports.bundlePlugin = (mode, clean = false) => {
 
 exports.bundleDemo = (mode, clean = false) => {
   return viteBuild({
-
-    esbuild: {
-
-    },
     build: {
       mode: "development",
       emptyOutDir: clean,

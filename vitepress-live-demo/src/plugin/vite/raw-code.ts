@@ -6,7 +6,6 @@ import { getAbsolutePath } from '../code-raw/common'
 import type { LiveDemoPluginOptions } from '..'
 import * as path from 'path'
 
-
 function isSSR(option?: { ssr?: boolean }) {
   if (!option) return true
   if (option.ssr != undefined) return option.ssr
@@ -22,12 +21,19 @@ export interface Options {
 /**
  * an `Vite` plugin for server `live-demo` raw code
  */
-export function RawCodePlugin(options:Required<LiveDemoPluginOptions>) {
+export function RawCodePlugin(options: LiveDemoPluginOptions) {
   const files = new Set<string>()
   return {
     name: 'vite:live-demo:raw-code', // 必须的，将会在 warning 和 error 中显示
     enforce: 'post',
-    configResolved(_config){
+    config(config) {
+      // https://github.com/vuejs/vitepress/issues/476#issuecomment-1046189073
+      // @ts-ignore
+      const noExternal = config.ssr.noExternal || (config.ssr.noExternal = [])
+      noExternal.push('vitepress-live-demo')
+    },
+    configResolved(config) {
+      // config.env.Live_Demo_Alawys_Show_New_Tab = options.alwaysShowNewTabIcon ?? false
     },
     handleHotUpdate(ctx) {
       if (files.has(ctx.file)) {

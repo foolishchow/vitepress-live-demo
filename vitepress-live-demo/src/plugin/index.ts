@@ -39,7 +39,13 @@ export interface LiveDemoPluginOptions {
    *
    * @default false
    */
-  // preferIframe?: boolean
+  // alwaysIframe?: boolean
+  /**
+   * whether show open in new Tab
+   *
+   * @default false
+   */
+  // alwaysShowNewTabIcon?: boolean
 
   /**
    * options for scan demo
@@ -47,31 +53,19 @@ export interface LiveDemoPluginOptions {
    * `only used in build`
    *
    * [glob patterns](https://github.com/sindresorhus/globby#globbing-patterns).
-   * @default   {[`docs/**\/*.{vue,ts,tsx,js,jsx}`, `examples/**\/*.{vue,ts,tsx,js,jsx}`,'!.vitepress']}
+   * @default   {[`docs/**\/*.{vue,ts,tsx,js,jsx}`, `examples/**\/*.{vue,ts,tsx,js,jsx}`,'!.vitepress','!**\/*\/vite.config.{ts,js}']}
    */
   demos?: string[]
 }
 
 
-
 function VitePluginLiveDemo(option: LiveDemoPluginOptions = {}): PluginOption {
-  const defaultDemos = ['docs/**/*.{js,jsx,ts,tsx,vue}','examples/**/*.{js,jsx,ts,tsx,vue}','!.vitepress']
-  const defaultOption: Required<LiveDemoPluginOptions> = {
-    lineNumber: true,
-    // preferIframe: false,
-    demos: defaultDemos
-  }
-  const opt: Required<LiveDemoPluginOptions> = {
-    ...defaultOption,
-    ...option
-  }
-  if(!opt.demos || opt.demos.length == 0){
-    opt.demos = defaultDemos
-  }
+
+
   return [
-    RawCodePlugin(opt),
+    RawCodePlugin(option),
     DemoDevPlugin(),
-    DemoBuildPlugin(opt)
+    DemoBuildPlugin(option)
   ]
 }
 export { VitePluginLiveDemo, MarkdownItLiveDemo }

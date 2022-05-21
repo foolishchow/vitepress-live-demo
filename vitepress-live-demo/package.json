@@ -1,12 +1,12 @@
 {
   "name": "vitepress-live-demo",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "view demo in vitepress",
   "keywords": ["vitepress","demo","live-demo","iframe"],
   "main": "lib/plugin.js",
   "exports": {
     ".": "./lib/plugin.js",
-    "./lib/theme": "./lib/theme.mjs",
+    "./lib/theme": "./lib/theme.js",
     "./lib/iframe": "./lib/iframe.js",
     "./lib/style.css": "./lib/style.css"
   },

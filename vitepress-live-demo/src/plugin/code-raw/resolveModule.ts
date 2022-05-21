@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import util from 'util'
 import { highlight } from './highlight'
-import type { Options } from '../vite/raw-code'
 import type { FileAttr } from '../markdown/render'
 const readFile = util.promisify(fs.readFile)
 const exist = util.promisify(fs.exists)
@@ -12,7 +11,7 @@ import type { LiveDemoPluginOptions } from '..'
 /**
  * 读取文件
  */
-export async function resolveModule(filePath: string, opt: Required<LiveDemoPluginOptions>): Promise<FileAttr | null> {
+export async function resolveModule(filePath: string, opt: LiveDemoPluginOptions): Promise<FileAttr | null> {
   const extisted = await exist(filePath);
   if (!extisted) return null
   const language = path.extname(filePath).replace(/\./, '')
@@ -30,8 +29,8 @@ export async function resolveModule(filePath: string, opt: Required<LiveDemoPlug
 }
 
 
-function wrapCode(highlighted: string, language: string, opt: Required<LiveDemoPluginOptions>) {
-  if (opt.lineNumber) {
+function wrapCode(highlighted: string, language: string, opt: LiveDemoPluginOptions) {
+  if (opt.lineNumber??true) {
     return lineNumber(highlighted, language)
   }
   return `<div class="language-${language}">${highlighted}</div>`
