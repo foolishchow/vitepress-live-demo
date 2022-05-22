@@ -10,7 +10,8 @@ inspried by
 
 # demo
 
-see [`example`](./example/)
+[vform-element](https://foolishchow.gitee.io/vform-element/)   
+or see [`example`](./example/)
 
 # install 
 ```
