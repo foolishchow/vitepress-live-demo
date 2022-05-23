@@ -29,8 +29,13 @@ export function RawCodePlugin(options: LiveDemoPluginOptions) {
     config(config) {
       // https://github.com/vuejs/vitepress/issues/476#issuecomment-1046189073
       // @ts-ignore
-      const noExternal = config.ssr.noExternal || (config.ssr.noExternal = [])
+      const ssr = config.ssr || (config.ssr={})
+      // @ts-ignore
+      const noExternal = ssr.noExternal || (ssr.noExternal = [])
       noExternal.push('vitepress-live-demo')
+      const optimizeDeps = config.optimizeDeps || (config.optimizeDeps = {})
+      const exclued = optimizeDeps.exclude || (optimizeDeps.exclude = [])
+      exclued.push('vitepress-live-demo')
     },
     configResolved(config) {
       // config.env.Live_Demo_Alawys_Show_New_Tab = options.alwaysShowNewTabIcon ?? false
