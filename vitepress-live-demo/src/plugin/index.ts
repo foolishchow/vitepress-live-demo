@@ -35,17 +35,19 @@ export interface LiveDemoPluginOptions {
   /**
    * whether use Iframe for live demo for default
    *
-   * this is useful when you are writing an demo for mobile
+   * this is useful when you are writing demos for mobile
    *
    * @default false
    */
-  // alwaysIframe?: boolean
+  preferIframe?: boolean
   /**
    * whether show open in new Tab
    *
+   * if `true` , then every demo will show `view in new tab` icon , even if prop `iframe` is `false`
+   *
    * @default false
    */
-  // alwaysShowNewTabIcon?: boolean
+  alwaysShowNewTabIcon?: boolean
 
   /**
    * options for scan demo

@@ -2,12 +2,17 @@ import fs from 'fs'
 import path from 'path'
 import util from 'util'
 import { highlight } from './highlight'
-import type { FileAttr } from '../markdown/render'
 const readFile = util.promisify(fs.readFile)
 const exist = util.promisify(fs.exists)
 import type { LiveDemoPluginOptions } from '..'
 
-
+export type FileAttr = {
+  filePath: string;
+  name: string;
+  codeStr: string;
+  htmlStr?: string;
+  language: string;
+};
 /**
  * 读取文件
  */

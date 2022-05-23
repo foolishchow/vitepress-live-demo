@@ -4,14 +4,6 @@ import * as fs from 'fs'
 import { LiveDemoComponentName } from '../../constant';
 import { getRelativePath, LiveDemoExtName, LiveDemoScheme } from '../code-raw/common';
 
-export type FileAttr = {
-  filePath: string;
-  name: string;
-  codeStr: string;
-  htmlStr?: string;
-  language: string;
-};
-
 const attrRE = /\b(?<key>\w+)(="(?<value>[^"]*)")?/g;
 export function parseDemoAttr(attrs: string): ParsedAttrs {
   const meta: any = {};
@@ -91,7 +83,6 @@ export function compatDemo(meta: ParsedAttrs, md: MarkdownIt) {
 
   demo.push('>')
   if (meta.iframe) {
-
     demo.push(`<iframe :src="withBase('~demos.html#/${fileList[0]}')"/>`)
   } else {
     const localName = importSrc(meta.src!, hoistedTags, demoInfo)

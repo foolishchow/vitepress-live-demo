@@ -5,40 +5,34 @@ import { resolveModule } from '../code-raw/resolveModule'
 import { getAbsolutePath } from '../code-raw/common'
 import type { LiveDemoPluginOptions } from '..'
 import * as path from 'path'
-
+const packageJson = require('../../../package.json')
 function isSSR(option?: { ssr?: boolean }) {
   if (!option) return true
   if (option.ssr != undefined) return option.ssr
   return true
 }
 
-export interface Options {
-  /**
-   * 是否展示lineNumber
-   */
-  lineNumber: boolean
-}
 /**
  * an `Vite` plugin for server `live-demo` raw code
  */
 export function RawCodePlugin(options: LiveDemoPluginOptions) {
   const files = new Set<string>()
   return {
-    name: 'vite:live-demo:raw-code', // 必须的，将会在 warning 和 error 中显示
+    name: 'vite:live-demo:raw-code',
     enforce: 'post',
     config(config) {
       // https://github.com/vuejs/vitepress/issues/476#issuecomment-1046189073
       // @ts-ignore
-      const ssr = config.ssr || (config.ssr={})
+      const ssr = config.ssr || (config.ssr = {})
       // @ts-ignore
       const noExternal = ssr.noExternal || (ssr.noExternal = [])
-      noExternal.push('vitepress-live-demo')
+      noExternal.push(packageJson.name)
       const optimizeDeps = config.optimizeDeps || (config.optimizeDeps = {})
       const exclued = optimizeDeps.exclude || (optimizeDeps.exclude = [])
-      exclued.push('vitepress-live-demo')
+      exclued.push(packageJson.name)
     },
     configResolved(config) {
-      // config.env.Live_Demo_Alawys_Show_New_Tab = options.alwaysShowNewTabIcon ?? false
+      config.env.Live_Demo_Alawys_Show_New_Tab = options.alwaysShowNewTabIcon ?? false
     },
     handleHotUpdate(ctx) {
       if (files.has(ctx.file)) {
