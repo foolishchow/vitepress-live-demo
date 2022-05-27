@@ -1,5 +1,14 @@
 # vitepress-live-demo
 
+<p>
+    <a href="https://www.npmjs.com/package/vitepress-live-demo">
+        <img src="https://img.shields.io/npm/v/vitepress-live-demo.svg" alt="Version">
+    </a> 
+    <a href="https://www.npmjs.com/package/vitepress-live-demo">
+        <img src="https://img.shields.io/npm/dm/vitepress-live-demo.svg" alt="Downloads">
+    </a>
+</p>
+
 > view demo in vitepress
 >  - support iframe 
 >  - support isolate demo view in `~/demo.html`

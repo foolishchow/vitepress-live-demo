@@ -5,13 +5,13 @@ import { resolveModule } from '../code-raw/resolveModule'
 import { getAbsolutePath } from '../code-raw/common'
 import type { LiveDemoPluginOptions } from '..'
 import * as path from 'path'
-const packageJson = require('../../../package.json')
 function isSSR(option?: { ssr?: boolean }) {
   if (!option) return true
   if (option.ssr != undefined) return option.ssr
   return true
 }
 
+const pluginName = 'vitepress-live-demo'
 /**
  * an `Vite` plugin for server `live-demo` raw code
  */
@@ -26,10 +26,10 @@ export function RawCodePlugin(options: LiveDemoPluginOptions) {
       const ssr = config.ssr || (config.ssr = {})
       // @ts-ignore
       const noExternal = ssr.noExternal || (ssr.noExternal = [])
-      noExternal.push(packageJson.name)
+      noExternal.push(pluginName)
       const optimizeDeps = config.optimizeDeps || (config.optimizeDeps = {})
       const exclued = optimizeDeps.exclude || (optimizeDeps.exclude = [])
-      exclued.push(packageJson.name)
+      exclued.push(pluginName)
     },
     configResolved(config) {
       config.env.Live_Demo_Alawys_Show_New_Tab = options.alwaysShowNewTabIcon ?? false

@@ -1,6 +1,6 @@
 {
   "name": "vitepress-live-demo",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "view demo in vitepress",
   "keywords": ["vitepress","demo","live-demo","iframe"],
   "main": "lib/plugin.js",

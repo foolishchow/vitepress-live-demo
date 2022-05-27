@@ -70,7 +70,7 @@ export function DemoBuildPlugin(option:LiveDemoPluginOptions) {
             // console.info(chunk.name)
             if (chunk.isEntry && chunk.facadeModuleId && chunk.name.startsWith('live_demo')) {
               const hash = chunk.fileName.match(hashRE)![1]
-              chunkMap![chunk.name.toLowerCase()] = hash
+              chunkMap![chunk.name] = hash
             }
             // console.info(key, chunk.name)
           } catch (e) { }
