@@ -33,6 +33,7 @@ export function RawCodePlugin(options: LiveDemoPluginOptions) {
     },
     configResolved(config) {
       config.env.Live_Demo_Alawys_Show_New_Tab = options.alwaysShowNewTabIcon ?? false
+      config.env.Live_Demo_Prefer_Iftame = options.preferIframe ?? false
     },
     handleHotUpdate(ctx) {
       if (files.has(ctx.file)) {

@@ -23,6 +23,10 @@ export const LiveDemoComponenentProps = {
    */
   iframe: {
     type: Boolean,
+    default() {
+      // return false
+      return import.meta.env.Live_Demo_Prefer_Iftame as boolean
+    }
   },
   compact: {
     type: Boolean,
@@ -34,8 +38,8 @@ export const LiveDemoComponenentProps = {
   alwaysShowNewTab: {
     type: Boolean,
     default() {
-      return false
-      // return import.meta.env.Live_Demo_Alawys_Show_New_Tab as boolean
+      // return false
+      return import.meta.env.Live_Demo_Alawys_Show_New_Tab as boolean
     }
   }
 }
@@ -148,7 +152,8 @@ export const LiveDemoComponenent = defineComponent({
         <section {...context.attrs} class="live-demo-container">
 
           <div ref={slotWrapper} class={['demo-block', { compact: props.compact, iframe: props.iframe }]}>
-            {context?.slots?.default?.()}
+            {props.iframe ? null : context?.slots?.default?.()}
+            {props.iframe ? <iframe src={props.demoSrc} /> : null}
           </div>
 
           <div class="action-line">

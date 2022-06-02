@@ -82,12 +82,12 @@ export function compatDemo(meta: ParsedAttrs, md: MarkdownIt) {
   demo.push(`:demo-src="withBase('~demos.html#/${fileList[0]}')"`)
 
   demo.push('>')
-  if (meta.iframe) {
-    demo.push(`<iframe :src="withBase('~demos.html#/${fileList[0]}')"/>`)
-  } else {
+  // if (meta.iframe) {
+  //   demo.push(`<iframe :src="withBase('~demos.html#/${fileList[0]}')"/>`)
+  // } else {
     const localName = importSrc(meta.src!, hoistedTags, demoInfo)
     demo.push(`<${localName}/>`)
-  }
+  // }
   demo.push(`</${LiveDemoComponentName}>`)
   return demo.join(' ')
 
