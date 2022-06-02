@@ -49,7 +49,7 @@ export const config: UserConfig<DefaultTheme.Config> = {
     },
     plugins: [
       vueJsx(),
-      VitePluginLiveDemo({ lineNumber: true }),
+      VitePluginLiveDemo({ lineNumber: true,preferIframe:true }),
     ]
   },
 };
